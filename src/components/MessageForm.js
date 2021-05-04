@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { sendMessage, isTyping } from 'react-chat-engine';
-import { sendOutlined, PictureOutlined, SendOutlined } from '@ant-design/icons';
+import { PictureOutlined, SendOutlined } from '@ant-design/icons';
 
 const MessageForm = (props) => {
     const { chatId, creds } = props;
@@ -18,7 +18,7 @@ const MessageForm = (props) => {
 
     const handleChange = (event) => {
         setValue(event.target.value);
-        isTyping(props, chatId)
+        //isTyping(props, chatId);
     }
 
     const handleUpload = (event) => {

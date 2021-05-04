@@ -6,6 +6,19 @@ const ChatFeed = (props) => {
     const { chats, activeChat, userName, messages } = props;
     const chat = chats && chats[activeChat];
 
+    const renderReadReceipts = (message, isMyMessage) => {
+        return chat.people.map((person, idx) => person.last_read === message.id && (
+            <div
+            key={`read_${idx}`}
+            className='read-receipt'
+            style={{
+                float: isMyMessage ? 'right' : 'left',
+                backgroundImage: person.person.avatar && `url(${person.person.avatar})`
+            }}
+            />
+        ))
+    }
+
     const renderMesages = () => {
         const keys = Object.keys(messages);
 
@@ -20,11 +33,13 @@ const ChatFeed = (props) => {
                         {
                             isMyMessage 
                             ? <MyMessage message={message} /> 
-                            : <TheirMessage message={message}  lastMesssage={messages[lastMessageKey]}/> 
+                            : <TheirMessage message={message}  lastMessage={messages[lastMessageKey]}/> 
                         }
                     </div>
                     <div className='read-receipts' style={{marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px'}}>
-                    read-receipts
+                    {
+                        renderReadReceipts(message, isMyMessage)
+                    }
                     </div>
                 </div>
             )
@@ -39,7 +54,7 @@ const ChatFeed = (props) => {
                 <div className='chat-title'>{chat.title}</div>
                 <div className='chat-subtitle'>
                     {
-                        chat.people.map(item => `${item.person.username}`)
+                        chat.people.map(item => `${item.person.username}, `)
                     }
                 </div>
             </div>

@@ -1,5 +1,4 @@
 const MyMessage = ({ message }) => {
-    
     if(message.attachments.length > 0){
         return(
             <img
