@@ -19,6 +19,7 @@ const ChatFeed = (props) => {
         ))
     }
 
+    
     const renderMesages = () => {
         const keys = Object.keys(messages);
 
