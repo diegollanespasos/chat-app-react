@@ -58,7 +58,10 @@ const LoginForm = () => {
                     </div>
                 </form>
                 <h2 className='error'>{error}</h2>
+                <h3 style={{ color: 'white', textAlign: 'center'}}>Users: diegollanes, jessepinkman</h3>
+                <h3 style={{ color: 'white', textAlign: 'center'}}>Password: 12345</h3>
             </div>
+            
         </div>
     )
 }
